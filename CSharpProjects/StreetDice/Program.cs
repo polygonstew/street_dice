@@ -1,5 +1,4 @@
-﻿// lil nasty down there right now.
-// var 
+﻿
 
 Console.Clear();
 
@@ -50,12 +49,15 @@ var title = """
                                 2 Players Only
 """;
 //score card
+// I am confused all to hell about these variables, I read about functions and parameters. Maybe this should work a lot easier.
+/* Should be able to push everything with the scoreCard() function.
 int p1cash = 100;
 int p2cash = 100;
 string matchFade = "???";
 int p1Bet = 0;
-int p2Bet = 0;
-static void scoreCard()
+int p2Bet = 0;  
+*/
+static void scoreCard(int thePot, int p1cash, int p2cash, string matchFade, int p1Bet, int p2Bet)
 {
 Console.ForegroundColor = ConsoleColor.Green;
 string scoreC = $"""
