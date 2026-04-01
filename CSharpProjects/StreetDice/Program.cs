@@ -53,44 +53,45 @@ switch (topText) {
 
 
 Console.WriteLine(title);
+Console.WriteLine(askPlayer);
+string play = "";
+switch (play) {
+    case "y":
+        Console.WriteLine(howManyPlayers);
+        playerCount = (Console.ReadLine()) 
+        switch {
+            "1" => 1,
+            "2" => 2,
+            "3" => 3,
+            "4" => 4,
+            _ => 0
+        };
+        if (playerCount > 0) {
+            Console.WriteLine($"Great! We have {playerCount} players ready to go!");
+        } else {
+            Console.WriteLine("Please enter a valid number of players (1-4).");
+        }
+    case "n":
+        Console.WriteLine("Maybe next time!");
+        break;
+    default:
+        Console.WriteLine("Please enter 'y' or 'n'.");
+        break;
+}
 
+//dice logic
 
 int roll1 = dice.Next(1, 7);
 int roll2 = dice.Next(1, 7);
-static void RollDie(int roll1)
+static void RollDie(int roll)
 {
-    switch (roll1)
+    switch (roll)
     {
         case 1:
-            Console.Write(" ------- \n|       |\n|   o   |\n|       |\n ------- "); // <-- removed Line to see if it will show the dice side by side, instead of one on top of the other.
+            Console.WriteLine(" ------- \n|       |\n|   o   |\n|       |\n ------- "); // <-- removed Line to see if it will show the dice side by side, instead of one on top of the other.
             break;
         case 2:
-            Console.Write(" ------- \n|   o   |\n|       |\n|   o   |\n ------- "); // triend the slash n at the end, still stacked.
-            break;
-        case 3:
-            Console.Write(" ------- \n| o     |\n|   o   |\n|     o |\n ------- ");
-            break;
-        case 4:
-            Console.Write(" ------- \n| o   o |\n|       |\n| o   o |\n ------- ");
-            break;
-        case 5:
-            Console.Write(" ------- \n| o   o |\n|   o   |\n| o   o |\n ------- ");
-            break;
-        case 6:
-            Console.Write(" ------- \n| o   o |\n| o   o |\n| o   o |\n ------- ");
-            break;
-        
-    }
-}        
-static void RollDie2(int roll2)
-{
-switch (roll2)
-    {
-        case 1:
-            Console.WriteLine(" ------- \n|       |\n|   o   |\n|       |\n ------- ");
-            break;
-        case 2:
-            Console.WriteLine(" ------- \n|   o   |\n|       |\n|   o   |\n ------- ");
+            Console.WriteLine(" ------- \n|   o   |\n|       |\n|   o   |\n ------- "); // triend the slash n at the end, still stacked.
             break;
         case 3:
             Console.WriteLine(" ------- \n| o     |\n|   o   |\n|     o |\n ------- ");
@@ -106,11 +107,35 @@ switch (roll2)
             break;
         
     }
-}
-// I don't get functions yet obvliously
+} 
+// I don't get functions yet obvliously !!!!!!!!!!! OMG really. 
 // these babies wanna stack.
+
+/*/ rewards
+!!! I don't know about these. I want more of a competitive game
+int totalScore = roll1 + roll2;
+
+if (roll1 == 1 && roll2 == 1)
+{
+    Console.WriteLine("Snake Eyes! You lose everything!");
+}
+else if (roll1 == roll2)
+{
+    Console.WriteLine("Doubles! You get to roll again!");
+}
+else if (totalScore == 7 || totalScore == 11)
+{
+    Console.WriteLine("Winner winner, chicken dinner!");
+}
+else
+{
+    Console.WriteLine($"You scored {totalScore}. Nothing special happens.");
+}
+*/
+Console.WriteLine(howManyPlayers);
+
 RollDie(roll1);
-RollDie2(roll2);
+RollDie(roll2);
 Console.WriteLine($"You rolled: {roll1} and {roll2}");
 // 
 // i'm getting double rolls for some reason
