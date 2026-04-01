@@ -2,8 +2,6 @@
 // var 
 Random slogans = new Random();
 int topText = slogans.Next(0, 4);
-Random dice = new Random();
-int roll = dice.Next(1, 7);
 
 //slogans
 string slogan1 = "                       This isn't momma's street corner anymore!";
@@ -16,10 +14,6 @@ var slogan = new string[] {
     slogan3,
     slogan4
 };
-//player setup
-string askPlayer = "Would you like to play? (y/n)";
-string howManyPlayers = "How many players? (1-4)";
-int playerCount = 0;
 
 //title card
 var title = """
@@ -51,36 +45,16 @@ switch (topText) {
         break;
 }
 
-
+//load title card
 Console.WriteLine(title);
-Console.WriteLine(askPlayer);
-string play = "";
-switch (play) {
-    case "y":
-        Console.WriteLine(howManyPlayers);
-        playerCount = (Console.ReadLine()) 
-        switch {
-            "1" => 1,
-            "2" => 2,
-            "3" => 3,
-            "4" => 4,
-            _ => 0
-        };
-        if (playerCount > 0) {
-            Console.WriteLine($"Great! We have {playerCount} players ready to go!");
-        } else {
-            Console.WriteLine("Please enter a valid number of players (1-4).");
-        }
-    case "n":
-        Console.WriteLine("Maybe next time!");
-        break;
-    default:
-        Console.WriteLine("Please enter 'y' or 'n'.");
-        break;
-}
+
+
 
 //dice logic
-
+Random dice = new Random(); // cam I drop this? no
+int roll = dice.Next(1, 7);
+// I want to make a function for this, but I don't know how to do that yet.
+//2 rolls
 int roll1 = dice.Next(1, 7);
 int roll2 = dice.Next(1, 7);
 static void RollDie(int roll)
@@ -132,7 +106,33 @@ else
     Console.WriteLine($"You scored {totalScore}. Nothing special happens.");
 }
 */
+//player setup
+string askPlayer = "Are you ready to play? (y/n)";
+string howManyPlayers = "How many players? (1-4)";
+int playerCount = 0;
+
+//asking
+
+Console.WriteLine(askPlayer);
+string play = Console.ReadLine().ToLower();
+if (play == "y") {
+        
+        
+    Console.WriteLine("Welcome to the streets! Let's get you set up!");
+    }
+    else if (play == "n") {
+        Console.WriteLine("Maybe next time!.... punk");
+    }
+    else {
+        Console.WriteLine("Please enter 'y' or 'n'.");
+    }   
+     
+// getting sloppy 
+
 Console.WriteLine(howManyPlayers);
+playerCount = Convert.ToInt32(Console.ReadLine());
+Console.WriteLine($"Great! We have {playerCount} players ready to go!");
+
 
 RollDie(roll1);
 RollDie(roll2);
