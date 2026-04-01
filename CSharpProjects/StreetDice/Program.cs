@@ -32,6 +32,11 @@ var slogan = new string[] {
     slogan3,
     slogan4
 };
+//player setup
+// also I just realized I am going to have a computer player so one person can play.
+string askPlayer = "Would you like to play? (y/n)";
+string howManyPlayers = "How many players? (1-4)";
+int playerCount = 0;
 
 //title card
 var title = """
@@ -47,6 +52,7 @@ var title = """
 // string topText = "";
 
 // Slogan Selection
+
 
 switch (topText) {
     case 0:
@@ -70,7 +76,7 @@ switch (topText) {
 Console.WriteLine(title);
 
 // die 1
-
+/*
 switch (roll)
 {
     case 1:
@@ -93,10 +99,44 @@ switch (roll)
         break;
     
 }
-
+//// !!! Kinda stuck now. getting errors. I'm pushing this and clearing out the commented roll code.
+/// also I think i'm always rolling 2. Not sire why but lets see I guess! 
+*/
 //roll 2
-//but... can't i put this in a function or something?
+//but... can't i put this in a function or something? const? looking it up. 
+// static void RollDie(int roll)!
 
+static void RollDie(int roll)
+{
+    switch (roll)
+    {
+        case 1:
+            Console.WriteLine(" ------- \n|       |\n|   o   |\n|       |\n ------- ");
+            break;
+        case 2:
+            Console.WriteLine(" ------- \n|   o   |\n|       |\n|   o   |\n ------- ");
+            break;
+        case 3:
+            Console.WriteLine(" ------- \n| o     |\n|   o   |\n|     o |\n ------- ");
+            break;
+        case 4:
+            Console.WriteLine(" ------- \n| o   o |\n|       |\n| o   o |\n ------- ");
+            break;
+        case 5:
+            Console.WriteLine(" ------- \n| o   o |\n|   o   |\n| o   o |\n ------- ");
+            break;
+        case 6:
+            Console.WriteLine(" ------- \n| o   o |\n| o   o |\n| o   o |\n ------- ");
+            break;
+        
+    }
+}
+
+RollDie(roll);
+Console.Write(roll);
+RollDie(roll);
+Console.WriteLine(roll);
+/* that wasn't easy to figure out 
 switch (roll)
 {
     case 1:
@@ -118,4 +158,5 @@ switch (roll)
         Console.WriteLine(" ------- \n| o   o |\n| o   o |\n| o   o |\n ------- ");
         break;
     
-}
+} I will clear all this out when I am done, because you can look at history if I git enough.
+*/
