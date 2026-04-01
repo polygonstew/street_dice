@@ -1,31 +1,25 @@
 ﻿// lil nasty down there right now.
 // var 
-Random slogans = new Random();
-int topText = slogans.Next(0, 4);
+
 Console.Clear();
-//slogans
-string slogan1 = "                       This isn't momma's street corner anymore!";
-string slogan2 = "                          Gotta look nice when your playing...!";
-string slogan3 = "                         ...you gonna die twice and become...!";
-string slogan4 = "                        today you could be a street dice legend!";
-var slogan = new string[] {
-    slogan1,
-    slogan2,
-    slogan3,
-    slogan4
-};
 
-//title card
-var title = """
-         _________  __                         __    ________  .__            
-        /   _____/ /  |________   ____   _____/  |_  \______ \ |__| ____  ____  
-        \_____  \\    __\_  __ \_/ __ \_/ __ \   __\  |    |  \|  |/ ___\/ __ \ 
-         /        \|  |  |  | \/\  ___/\  ___/|  |    |    `   \  \  \__\  ___/ 
-        /_______  /|__|  |__|    \___  >\___  >__|   /_______  /__|\___  >___  >
-                \/                   \/     \/               \/        \/    \/ 
-                                2 Players Only
-""";
 
+
+static void titleCard()
+{
+   Random slogans = new Random();
+   int topText = slogans.Next(0, 4);
+   //slogans
+    string slogan1 = "                       This isn't Momma's street corner anymore!";
+    string slogan2 = "                         better look nice when your playing...";
+    string slogan3 = "                         ...you gonna die twice and become...";
+    string slogan4 = "                        today you could be a street dice legend!";
+    var slogan = new string[] {
+        slogan1,
+        slogan2,
+        slogan3,
+        slogan4
+    };    
 // Slogan Selection
 switch (topText) {
     case 0:
@@ -43,12 +37,21 @@ switch (topText) {
     default:
         Console.WriteLine(slogan[0]);
         break;
-}
-
+    }
+//title card
+var title = """
+         _________  __                         __    ________  .__            
+        /   _____/ /  |________   ____   _____/  |_  \______ \ |__| ____  ____  
+        \_____  \\    __\_  __ \_/ __ \_/ __ \   __\  |    |  \|  |/ ___\/ __ \ 
+         /        \|  |  |  | \/\  ___/\  ___/|  |    |    `   \  \  \__\  ___/ 
+        /_______  /|__|  |__|    \___  >\___  >__|   /_______  /__|\___  >___  >
+                \/                   \/     \/               \/        \/    \/ 
+                                2 Players Only
+""";
 //load title card
 Console.WriteLine(title);
-
-
+}
+titleCard();
 
 //dice logic
 Random dice = new Random(); // cam I drop this? no
@@ -112,20 +115,19 @@ string askPlayer = "\n                         Are you ready to play? (y/n)";
 string hL = "\n                      Someone pick High or Low! (H/L)";
 // int playerCount = 0;
 
-//asking
 
-Console.Write(askPlayer);
-string play = Console.ReadLine().ToLower();
-if (play == "y") {
+while (true) 
+{
+    Console.Write(askPlayer);
+    string play = Console.ReadLine().ToLower();
+    if (play == "y") {
         
     
     Console.Clear();
-    switch (topText) {case 0: Console.WriteLine(slogan[0]);break;case 1:Console.WriteLine(slogan[1]);break;case 2:Console.WriteLine(slogan[2]);break;case 3:Console.WriteLine(slogan[3]);break;default:Console.WriteLine(slogan[0]);break;}
-    
-    Console.WriteLine(topText);
-    Console.WriteLine(title);   
+    titleCard();  
     Console.WriteLine("                   Welcome to the streets! Let's get you set up!\n");
     Console.Write(hL);
+    break;
     }
     else if (play == "n") {
         Console.WriteLine("\n                       Maybe next time!.... punk");
@@ -135,7 +137,7 @@ if (play == "y") {
         
         Console.WriteLine("\n                           Please enter 'y' or 'n'.");
     }   
-     
+}
 // getting sloppy 
 
 
@@ -144,27 +146,27 @@ if (play == "y") {
 
 bool shooterChosen = false; // Confusing as all get out. I finally maybe have it working, all just to choose the shooter.
 string hLC = Console.ReadLine().ToUpper();  // <--- this is always orange swiggles / use  'string?'  and moved it into loop
-    
+string hLC2 = " ";    
 if (hLC == "H")
     {
-        hLC = "High";
+        hLC2 = "High";
     }
     else if (hLC == "L")
     {
-        hLC = "Low";
+        hLC2 = "Low";
     }
     else
     {
         Console.WriteLine("                    Please enter 'H' for High or 'L' for Low."); // this is messing something up
         //continue; // had no clue this was a thing. I think this is looping back to the H/L question
     }
-Console.WriteLine($"                Great! {hLC} it is! Now let's see what you will roll...");
+Console.Clear();
+titleCard();
+Console.WriteLine($"                Great! {hLC2} it is! Now let's see what you will roll...");
+Console.WriteLine($"                           Press any key to continue...");
 Console.ReadKey();
 Console.Clear();
-switch (topText) {    case 0:        Console.WriteLine(slogan[0]);        break;    case 1:        Console.WriteLine(slogan[1]);        break;    case 2:        Console.WriteLine(slogan[2]);        break;    case 3:        Console.WriteLine(slogan[3]);        break;    default:        Console.WriteLine(slogan[0]);        break;}
-
-Console.WriteLine(topText);
-Console.WriteLine(title);
+titleCard();
 Console.WriteLine("\n--- Player 1 Rolls ---");
 
 int p1Roll1 = dice.Next(1, 7);
@@ -176,12 +178,9 @@ Console.WriteLine($"Player 1 rolled a total of: {shooter1}");
 Console.WriteLine("\nPress any key to continue...");
 Console.ReadKey();
 Console.Clear();
-switch (topText) {    case 0:        Console.WriteLine(slogan[0]);        break;    case 1:        Console.WriteLine(slogan[1]);        break;    case 2:        Console.WriteLine(slogan[2]);        break;    case 3:        Console.WriteLine(slogan[3]);        break;    default:        Console.WriteLine(slogan[0]);        break;}
-
-Console.WriteLine(topText);
-Console.WriteLine(title);
-Console.WriteLine("\n--- Player 2 Rolls ---" + "\nNumber to beat is: " + shooter1);
-Console.WriteLine("\nPress any key to continue...");
+titleCard();
+Console.WriteLine(@"--- Player 2 Rolls ---" + "\nNumber to beat is: " + shooter1);
+Console.WriteLine("\nPress any key to roll...");
 Console.ReadKey();
 // numbers for player 2
 int p2Roll1 = dice.Next(1, 7);
@@ -192,57 +191,62 @@ int shooter2 = p2Roll1 + p2Roll2;
 Console.WriteLine($"Player 2 rolled a total of: {shooter2}\n");
 Console.ReadKey();
 Console.Clear();
-switch (topText) {    case 0:        Console.WriteLine(slogan[0]);        break;    case 1:        Console.WriteLine(slogan[1]);        break;    case 2:        Console.WriteLine(slogan[2]);        break;    case 3:        Console.WriteLine(slogan[3]);        break;    default:        Console.WriteLine(slogan[0]);        break;}
-
-Console.WriteLine(topText);
-Console.WriteLine(title);
+titleCard();
+while (true)
+{
+   
 // shooter choice logic // really considering make 'switch'
 if (shooter1 == shooter2) 
 {
-    Console.WriteLine("It's a tie! Roll again!");
+    Console.WriteLine("                                   It's a tie! Roll again!");
 }
 else if (shooter1 > shooter2 && hLC == "H") 
 {
-    Console.WriteLine("Player 1 rolled higher! Player 1 is the SHOOTER!");
+    Console.WriteLine("                   Player 1 rolled higher! Player 1 is the SHOOTER!");
     shooterChosen = false; // This breaks the loop! I think, I don't know it is looping back to the H/L question.
+    break;
 }
 else if (shooter1 < shooter2 && hLC == "L") 
 {
-    Console.WriteLine("Player 1 rolled lower! Player 1 is the SHOOTER!");
+    Console.WriteLine("                   Player 1 rolled lower! Player 1 is the SHOOTER!");
     shooterChosen = false;
+    break;
 }
 else if (shooter1 > shooter2 && hLC == "L") 
 {
-    Console.WriteLine("Player 2 rolled higher! Player 2 is the SHOOTER!");
+    Console.WriteLine("                   Player 2 rolled higher! Player 2 is the SHOOTER!");
     shooterChosen = true;
+    break;
 }
 else if (shooter1 < shooter2 && hLC == "H") 
 {
-    Console.WriteLine("Player 2 rolled lower! Player 2 is the SHOOTER!");
+    Console.WriteLine("                   Player 2 rolled lower! Player 2 is the SHOOTER!");
     shooterChosen = true;
+    break;
 }
-Console.WriteLine("\nPress any key to continue...");
+Console.WriteLine("\n                   Press any key to continue...");
 Console.ReadKey();
 Console.Clear();
-
+}
 // !!! @@@ WOOOO finally, got a shooter, now the real fun.
 
 // Slogan Selection in one line
-switch (topText) {    case 0:        Console.WriteLine(slogan[0]);        break;    case 1:        Console.WriteLine(slogan[1]);        break;    case 2:        Console.WriteLine(slogan[2]);        break;    case 3:        Console.WriteLine(slogan[3]);        break;    default:        Console.WriteLine(slogan[0]);        break;}
-Console.WriteLine(topText);
-Console.WriteLine(title);
+//titleCard();
 
 if (shooterChosen != false) 
 {
-    Console.WriteLine("Let's get this game started! Player 1 is the SHOOTER!");
-    Console.WriteLine("Press any key to continue...");
+    Console.WriteLine("                        Let's get this game started! Player 1 is the SHOOTER!");
+    Console.WriteLine("                                   Press any key to continue...");
     Console.ReadKey();
 
 }
 else if (shooterChosen == true)
 {
-    Console.WriteLine("Let's get this game started! Player 2 is the SHOOTER!");
-    Console.WriteLine("Press any key to continue...");
+    Console.WriteLine("                        Let's get this game started! Player 2 is the SHOOTER!");
+    Console.WriteLine("                                   Press any key to continue...");
     Console.ReadKey();
 }
+
+Console.WriteLine("\n--- SHOOTER RULES ---");
+Console.WriteLine("You the shooter has to toll a 7 or 11 to win, or a 2, 3, or 12 to lose.\n If you roll a 4, 5, 6, 8, 9, or 10 that becomes the point \nand you have to roll that number again before you roll a 7 to win!\n Good luck!");
 // Fresh Bottom , ohhhh yeah
