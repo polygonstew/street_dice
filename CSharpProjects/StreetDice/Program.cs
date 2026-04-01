@@ -114,7 +114,7 @@ string hL = "Someone pick High or Low! (H/L)";
 
 //asking
 
-Console.WriteLine(askPlayer);
+Console.Write(askPlayer);
 string play = Console.ReadLine().ToLower();
 if (play == "y") {
         
@@ -130,20 +130,92 @@ if (play == "y") {
     }   
      
 // getting sloppy 
-bool shooterChosen = false;
+
+
 // Console.WriteLine(howManyPlayers);
 // if YES
-string hLC = (Console.ReadLine());
-Console.WriteLine($"Great! {hLC} it is! Now let's see what you will roll...");
+
+bool shooterChosen = false; // Confusing as all get out. I finally maybe have it working, all just to choose the shooter.
+string hLC = Console.ReadLine().ToUpper();  // <--- this is always orange swiggles / use  'string?'  and moved it into loop
+    
+if (hLC == "H")
+    {
+        hLC = "High";
+    }
+    else if (hLC == "L")
+    {
+        hLC = "Low";
+    }
+    else
+    {
+        Console.WriteLine("Please enter 'H' for High or 'L' for Low."); // this is messing something up
+        //continue; // had no clue this was a thing. I think this is looping back to the H/L question
+    }
+    Console.WriteLine($"Great! {hLC} it is! Now let's see what you will roll...");
+    Console.WriteLine("\n--- Player 1 Rolls ---");
+    
+    int p1Roll1 = dice.Next(1, 7);
+    int p1Roll2 = dice.Next(1, 7);
+    RollDie(p1Roll1);
+    RollDie(p1Roll2);
+    int shooter1 = p1Roll1 + p1Roll2;
+    Console.WriteLine($"Player 1 rolled a total of: {shooter1}");
+
+    Console.WriteLine("\n--- Player 2 Rolls ---");
+    // numbers for player 2
+    int p2Roll1 = dice.Next(1, 7);
+    int p2Roll2 = dice.Next(1, 7);
+    RollDie(p2Roll1);
+    RollDie(p2Roll2);
+    int shooter2 = p2Roll1 + p2Roll2;
+    Console.WriteLine($"Player 2 rolled a total of: {shooter2}\n");
+
+    // shooter choice logic // really considering make 'switch'
+    if (shooter1 == shooter2) 
+    {
+        Console.WriteLine("It's a tie! Roll again!");
+    }
+    else if (shooter1 > shooter2 && hLC == "H") 
+    {
+        Console.WriteLine("Player 1 rolled higher! Player 1 is the SHOOTER!");
+        shooterChosen = true; // This breaks the loop! I think, I don't know it is looping back to the H/L question.
+    }
+    else if (shooter1 < shooter2 && hLC == "L") 
+    {
+        Console.WriteLine("Player 1 rolled lower! Player 1 is the SHOOTER!");
+        shooterChosen = true;
+    }
+    else if (shooter1 > shooter2 && hLC == "L") 
+    {
+        Console.WriteLine("Player 2 rolled higher! Player 2 is the SHOOTER!");
+        shooterChosen = true;
+    }
+    else if (shooter1 < shooter2 && hLC == "H") 
+    {
+        Console.WriteLine("Player 2 rolled lower! Player 2 is the SHOOTER!");
+        shooterChosen = true;
+    }
+    /*
+} do {
+    Console.WriteLine("Let's get this game started!");
+    // game logic goes here
+} while (shooterChosen == true);
+    */
+
+
+/*
+//!! All that lovely code that stinks of dumbass
+
 RollDie(roll1);
 RollDie(roll2);
 Console.WriteLine($"You rolled: {roll1} and {roll2}");
-int shooter1 = roll1 + roll2;
+//int shooter1 = roll1 + roll2;
 Console.WriteLine("Player 2 rolls...");
 RollDie(roll1);
 RollDie(roll2);
 Console.WriteLine($"You rolled: {roll1} and {roll2}");
-int shooter2 = roll1 + roll2;
+
+//int shooter2 = roll1 + roll2;
 if (shooter1 > shooter2 && hLC == "H") {
         Console.WriteLine("Player 1 wins! You are the SHOOTER!");
         shooterChosen = true;
@@ -163,7 +235,7 @@ if (shooter1 > shooter2 && hLC == "H") {
     else {
         Console.WriteLine("It's a tie! Roll again!");
     }
-
+*/
 // 
 // i'm getting double rolls for some reason
 // going to use VSCode's Source Control for the first time, in this project.
