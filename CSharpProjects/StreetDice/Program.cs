@@ -1,8 +1,5 @@
-﻿// cleaned up version
-using System;
-// ^ should I be putting 'using System;' here?
-// Street Dice - A simple console-based dice game for 2 players.
-// Global variables for game state
+﻿using System;
+
 int p1cash = 100;
 int p2cash = 100;
 int p1PlaceBet = 0;
@@ -19,7 +16,6 @@ Console.Clear();
 titleCard();
 while (true)
 {
-    
     Console.Write("\n                         Are you ready to play? (y/n) ");
     string play = (Console.ReadLine() ?? "").ToLower();
     
@@ -98,24 +94,32 @@ while (true)
     }
     else if (shooter1 > shooter2 && hLC == "H")
     {
+        Console.Clear();
+        titleCard();
         Console.WriteLine("                   Player 1 rolled higher! Player 1 is the SHOOTER!");
         shooterChosen = false;
         break;
     }
     else if (shooter1 < shooter2 && hLC == "L")
     {
+        Console.Clear();
+        titleCard();
         Console.WriteLine("                   Player 1 rolled lower! Player 1 is the SHOOTER!");
         shooterChosen = false;
         break;
     }
     else if (shooter1 > shooter2 && hLC == "L")
     {
+        Console.Clear();
+        titleCard();
         Console.WriteLine("                   Player 2 rolled higher! Player 2 is the SHOOTER!");
         shooterChosen = true;
         break;
     }
     else if (shooter1 < shooter2 && hLC == "H")
     {
+        Console.Clear();
+        titleCard();
         Console.WriteLine("                   Player 2 rolled lower! Player 2 is the SHOOTER!");
         shooterChosen = true;
         break;
@@ -143,10 +147,10 @@ titleCard();
 Console.WriteLine("\n BETTING RULES ---");
 Console.Write("Each player starts with ");
 Console.WriteLine("\x1b[33m$\x1b[32m100\x1b[0m CASH to start with.");
-Console.WriteLine("\xb1[31m MATCH \x1b[0m the SHOOTER's bet to play with them.\n \xb1[31mFADE\xb1[0m to bet against the SHOOTER.");
+Console.WriteLine("MATCH the SHOOTER's bet to play with them.\nFADE to bet against the SHOOTER."); // took out the \x1b[XXm]
 
 Console.WriteLine("\n \x1b[31m!!\x1b[0m SHOOTER RULES ---");
-Console.WriteLine("Roll \x1b[32m7\x1b[0m or \x1b[32m11\x1b[0m to win\n \x1b[33m2\x1b[0m, \x1b[33m3\x1b[0m, or \x1b[33m12\x1b[0m to lose.\n\x1b[31m4, 5, 6, 8, 9, or 10\x1b[0m becomes the \x1b[34mPOINT\x1b[0m \nroll that number again \x1b[32mWIN\x1b[0m\nroll a \x1b[33m7\x1b[0m \x1b[31mLOSE\x1b[0m dice and money\nGood luck!\nWhen done reading, press any key to continue...");
+Console.WriteLine("Roll \x1b[32m7\x1b[0m or \x1b[32m11\x1b[0m to win\n\x1b[33m2\x1b[0m, \x1b[33m3\x1b[0m, or \x1b[33m12\x1b[0m to lose.\n\x1b[31m4, 5, 6, 8, 9, or 10\x1b[0m becomes the \x1b[34mPOINT\x1b[0m \nroll that number again \x1b[32mWIN\x1b[0m\nroll a \x1b[33m7\x1b[0m \x1b[31mLOSE\x1b[0m dice and money\nGood luck!\nWhen done reading, press any key to continue...");
 Console.ReadKey();
 
 
@@ -183,7 +187,7 @@ else
 }
 
 
-// Had no idea I put the functions on the bottom and they work. And all the top stuff goes Global. Jesus man, the simpler things.
+
 
 
 void titleCard()
@@ -237,24 +241,31 @@ void scoreCard(int thePot, int p1c, int p2c, string mF, int p1B, int p2B)
     Console.ResetColor();
 }
 
-void RollDie(int r)
+void RollDie(int r)  // usinf 'r' is still kinda hard to grasp
 {
-    Console.BackgroundColor = ConsoleColor.White;
-    Console.ForegroundColor = ConsoleColor.Black;
+    string[] dieLines = new string[5];
+
+    // FINALLY i get some clean setup dice.
     switch (r)
     {
-        case 1: Console.WriteLine(" ------- \n|       |\n|   o   |\n|       |\n -------"); break; // gonna have to add the color reset to each end /x1b[0m
-        case 2: Console.WriteLine(" ------- \n|   o   |\n|       |\n|   o   |\n -------"); break; // color is bleeding on 2nd roll. Maybe a clear
-        case 3: Console.WriteLine(" ------- \n| o     |\n|   o   |\n|     o |\n -------"); break;
-        case 4: Console.WriteLine(" ------- \n| o   o |\n|       |\n| o   o |\n -------"); break;
-        case 5: Console.WriteLine(" ------- \n| o   o |\n|   o   |\n| o   o |\n -------"); break;
-        case 6: Console.WriteLine(" ------- \n| o   o |\n| o   o |\n| o   o |\n -------"); break;
+        case 1: dieLines = new string[] { " ------- ", "|       |", "|   o   |", "|       |", " ------- " }; break;
+        case 2: dieLines = new string[] { " ------- ", "|   o   |", "|       |", "|   o   |", " ------- " }; break;
+        case 3: dieLines = new string[] { " ------- ", "| o     |", "|   o   |", "|     o |", " ------- " }; break;
+        case 4: dieLines = new string[] { " ------- ", "| o   o |", "|       |", "| o   o |", " ------- " }; break;
+        case 5: dieLines = new string[] { " ------- ", "| o   o |", "|   o   |", "| o   o |", " ------- " }; break;
+        case 6: dieLines = new string[] { " ------- ", "| o   o |", "| o   o |", "| o   o |", " ------- " }; break;
     }
-    Console.ResetColor();
-    Console.WriteLine("Rolled a " + r + "\n Press any key to continue...");  // Add a readyKey, I think that will reset
-    //Console.ReadKey();  // Clearing after this
-    //Console.Clear();
-    //titleCard(); // Add logo so it looks like it's always at the top. But.... I don't want it up when calling the scoreCard
+
+    // these are hard to crack
+    foreach (string line in dieLines)
+    {
+        // color switch for the dice to keep bleeding off
+        Console.BackgroundColor = ConsoleColor.White;
+        Console.ForegroundColor = ConsoleColor.Black;
+        Console.Write(line);
+        Console.ResetColor();
+        Console.WriteLine(); 
+    }
 }
 
 void BettingPhase()
