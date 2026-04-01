@@ -54,10 +54,36 @@ switch (topText) {
 Console.WriteLine(title);
 
 
-
-static void RollDie(int roll)
+int roll1 = dice.Next(1, 7);
+int roll2 = dice.Next(1, 7);
+static void RollDie(int roll1)
 {
-    switch (roll)
+    switch (roll1)
+    {
+        case 1:
+            Console.WriteLine(" ------- \n|       |\n|   o   |\n|       |\n ------- ");
+            break;
+        case 2:
+            Console.WriteLine(" ------- \n|   o   |\n|       |\n|   o   |\n ------- ");
+            break;
+        case 3:
+            Console.WriteLine(" ------- \n| o     |\n|   o   |\n|     o |\n ------- ");
+            break;
+        case 4:
+            Console.WriteLine(" ------- \n| o   o |\n|       |\n| o   o |\n ------- ");
+            break;
+        case 5:
+            Console.WriteLine(" ------- \n| o   o |\n|   o   |\n| o   o |\n ------- ");
+            break;
+        case 6:
+            Console.WriteLine(" ------- \n| o   o |\n| o   o |\n| o   o |\n ------- ");
+            break;
+        
+    }
+}        
+static void RollDie2(int roll2)
+{
+switch (roll2)
     {
         case 1:
             Console.WriteLine(" ------- \n|       |\n|   o   |\n|       |\n ------- ");
@@ -81,10 +107,9 @@ static void RollDie(int roll)
     }
 }
 
-RollDie(roll);
-Console.Write(roll);
-RollDie(roll);
-Console.WriteLine(roll);
+RollDie(roll1, roll2);
+Console.Write(roll1);
+Console.WriteLine(roll2);
 // nice and clean
 // i'm getting double rolls for some reason
 // going to use VSCode's Source Control for the first time, in this project.
