@@ -1,4 +1,5 @@
-﻿// var // nice and clean
+﻿// lil nasty down there right now.
+// var 
 Random slogans = new Random();
 int topText = slogans.Next(0, 4);
 Random dice = new Random();
@@ -106,10 +107,10 @@ switch (roll2)
         
     }
 }
-
-RollDie(roll1, roll2);
-Console.Write(roll1);
-Console.WriteLine(roll2);
-// nice and clean
+// I don't get functions yet obvliously
+RollDie(roll1);
+RollDie2(roll2);
+Console.WriteLine($"You rolled: {roll1} and {roll2}");
+// 
 // i'm getting double rolls for some reason
 // going to use VSCode's Source Control for the first time, in this project.
