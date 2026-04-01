@@ -38,6 +38,7 @@ switch (topText) {
         Console.WriteLine(slogan[0]);
         break;
     }
+}  //  <----- this little bastard right HERE!!! 
 //title card
 var title = """
          _________  __                         __    ________  .__            
@@ -48,9 +49,36 @@ var title = """
                 \/                   \/     \/               \/        \/    \/ 
                                 2 Players Only
 """;
-//load title card
-Console.WriteLine(title);
+//score card
+int p1cash = 100;
+int p2cash = 100;
+string matchFade = "???";
+int p1Bet = 0;
+int p2Bet = 0;
+static void scoreCard()
+{
+Console.ForegroundColor = ConsoleColor.Green;
+string scoreC = $"""
+    /$$   
+  /$$$$$$                 Pot: ${thePot}
+ /$$__  $$          -----------------
+| $$  \__/         | Player 1: ${p1cash}  |
+|  $$$$$$          | Player 2: ${p2cash}  |
+ \____  $$          -----------------
+ /$$  \ $$           Chose to:{matchFade}
+|  $$$$$$/          Player 1 Bet: ${p1Bet}
+ \_  $$_/           Player 2 Bet: ${p2Bet}
+   \__/   
+
+""";
+Console.Write(scoreC);
+Console.ResetColor();
 }
+//load title card
+Console.ForegroundColor = ConsoleColor.DarkRed;
+Console.WriteLine(title);
+Console.ResetColor();
+
 titleCard();
 
 //dice logic
@@ -246,7 +274,26 @@ else if (shooterChosen == true)
     Console.WriteLine("                                   Press any key to continue...");
     Console.ReadKey();
 }
+Console.ReadKey();
+Console.Clear();
+titleCard();
+// Now the betting.
 
-Console.WriteLine("\n--- SHOOTER RULES ---");
-Console.WriteLine("You the shooter has to toll a 7 or 11 to win, or a 2, 3, or 12 to lose.\n If you roll a 4, 5, 6, 8, 9, or 10 that becomes the point \nand you have to roll that number again before you roll a 7 to win!\n Good luck!");
+Console.WriteLine("\n BETTING RULES ---");
+Console.Write("Each player starts with ");
+Console.ForegroundColor = ConsoleColor.Green;
+Console.Write("$100 CASH");
+Console.ResetColor();
+Console.WriteLine("MATCH the SHOOTER's bet to play with them.\n FADE to bet against the SHOOTER.");
+
+
+Console.WriteLine("\n SHOOTER RULES ---");
+Console.WriteLine("Roll 7 or 11 to win\n2, 3, or 12 to lose.\n4, 5, 6, 8, 9, or 10 becomes the POINT \nroll that number again WIN\nroll a 7 LOSE dice and money\nGood luck!\nWhen done reading, press any key to continue...");
+Console.ReadKey();
+Console.Clear();
+scoreCard(); // <---- this isn't working / I did now, good lord.
+
+Console.WriteLine("\nPlayer 1, place your bet! (enter a number)");
 // Fresh Bottom , ohhhh yeah
+
+

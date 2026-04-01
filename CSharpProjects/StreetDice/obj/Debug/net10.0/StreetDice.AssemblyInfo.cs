@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("StreetDice")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0629bf4cb540d88587992c3af0666d15e973071d")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3b686d658b6ee6b301e1629c547e7cf9e3f53f30")]
 [assembly: System.Reflection.AssemblyProductAttribute("StreetDice")]
 [assembly: System.Reflection.AssemblyTitleAttribute("StreetDice")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
