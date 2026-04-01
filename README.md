@@ -11,6 +11,17 @@ So far I have found some sites that can turn words into ASCII art. Credited belo
  /        \|  |  |  | \/\  ___/\  ___/|  |    |    `   \  \  \__\  ___/ 
 /_______  /|__|  |__|    \___  >\___  >__|   /_______  /__|\___  >___  >
         \/                   \/     \/               \/        \/    \/ </code>
+ <h1>NOPE """</h1>
+ <code>//title card
+var title = """
+         _________  __                         __    ________  .__            
+        /   _____/ /  |________   ____   _____/  |_  \______ \ |__| ____  ____  
+        \_____  \\    __\_  __ \_/ __ \_/ __ \   __\  |    |  \|  |/ ___\/ __ \ 
+         /        \|  |  |  | \/\  ___/\  ___/|  |    |    `   \  \  \__\  ___/ 
+        /_______  /|__|  |__|    \___  >\___  >__|   /_______  /__|\___  >___  >
+                \/                   \/     \/               \/        \/    \/ 
+
+""";</code>
 <line></line>
 <p>⚀⚁⚂⚃⚄⚅ <- I don't know if I can use these in C# console. Gonna find out!</p>
 <line></line>
@@ -21,7 +32,8 @@ So far I have found some sites that can turn words into ASCII art. Credited belo
   <li>Set Bet</li>
   <li>Throw the Dice</li>
 </ol>
-<h4>Sites:
-  https://emojicombos.com/dice-ascii [emojis]
-  https://patorjk.com/software/taag  [ascii font]
-</h4>
+<h4>Sites:<ul>
+  <li>https://emojicombos.com/dice-ascii [emojis]</li>
+  <li>https://patorjk.com/software/taag  [ascii font]</li>
+  <li>https://www.youtube.com/watch?v=fi9otS87g_M [yt tut]</li>
+</ul></h4>
