@@ -2,7 +2,7 @@
 // var 
 Random slogans = new Random();
 int topText = slogans.Next(0, 4);
-
+Console.Clear();
 //slogans
 string slogan1 = "                       This isn't momma's street corner anymore!";
 string slogan2 = "                          Gotta look nice when your playing...!";
@@ -107,9 +107,9 @@ first roll is THE COMEOUT if Shooter rolls(7 or 11 ) !!- WINS THE POT
 
 
 //player setup
-string askPlayer = "Are you ready to play? (y/n)";
+string askPlayer = "\n                         Are you ready to play? (y/n)";
 // string howManyPlayers = "How many players? (1-4)";
-string hL = "Someone pick High or Low! (H/L)";
+string hL = "\n                      Someone pick High or Low! (H/L)";
 // int playerCount = 0;
 
 //asking
@@ -118,15 +118,22 @@ Console.Write(askPlayer);
 string play = Console.ReadLine().ToLower();
 if (play == "y") {
         
-        
-    Console.WriteLine("Welcome to the streets! Let's get you set up!\n");
+    
+    Console.Clear();
+    switch (topText) {case 0: Console.WriteLine(slogan[0]);break;case 1:Console.WriteLine(slogan[1]);break;case 2:Console.WriteLine(slogan[2]);break;case 3:Console.WriteLine(slogan[3]);break;default:Console.WriteLine(slogan[0]);break;}
+    
+    Console.WriteLine(topText);
+    Console.WriteLine(title);   
+    Console.WriteLine("                   Welcome to the streets! Let's get you set up!\n");
     Console.Write(hL);
     }
     else if (play == "n") {
-        Console.WriteLine("Maybe next time!.... punk");
+        Console.WriteLine("\n                       Maybe next time!.... punk");
+        Environment.Exit(0);
     }
     else {
-        Console.WriteLine("Please enter 'y' or 'n'.");
+        
+        Console.WriteLine("\n                           Please enter 'y' or 'n'.");
     }   
      
 // getting sloppy 
@@ -148,94 +155,94 @@ if (hLC == "H")
     }
     else
     {
-        Console.WriteLine("Please enter 'H' for High or 'L' for Low."); // this is messing something up
+        Console.WriteLine("                    Please enter 'H' for High or 'L' for Low."); // this is messing something up
         //continue; // had no clue this was a thing. I think this is looping back to the H/L question
     }
-    Console.WriteLine($"Great! {hLC} it is! Now let's see what you will roll...");
-    Console.WriteLine("\n--- Player 1 Rolls ---");
-    
-    int p1Roll1 = dice.Next(1, 7);
-    int p1Roll2 = dice.Next(1, 7);
-    RollDie(p1Roll1);
-    RollDie(p1Roll2);
-    int shooter1 = p1Roll1 + p1Roll2;
-    Console.WriteLine($"Player 1 rolled a total of: {shooter1}");
+Console.WriteLine($"                Great! {hLC} it is! Now let's see what you will roll...");
+Console.ReadKey();
+Console.Clear();
+switch (topText) {    case 0:        Console.WriteLine(slogan[0]);        break;    case 1:        Console.WriteLine(slogan[1]);        break;    case 2:        Console.WriteLine(slogan[2]);        break;    case 3:        Console.WriteLine(slogan[3]);        break;    default:        Console.WriteLine(slogan[0]);        break;}
 
-    Console.WriteLine("\n--- Player 2 Rolls ---");
-    // numbers for player 2
-    int p2Roll1 = dice.Next(1, 7);
-    int p2Roll2 = dice.Next(1, 7);
-    RollDie(p2Roll1);
-    RollDie(p2Roll2);
-    int shooter2 = p2Roll1 + p2Roll2;
-    Console.WriteLine($"Player 2 rolled a total of: {shooter2}\n");
+Console.WriteLine(topText);
+Console.WriteLine(title);
+Console.WriteLine("\n--- Player 1 Rolls ---");
 
-    // shooter choice logic // really considering make 'switch'
-    if (shooter1 == shooter2) 
-    {
-        Console.WriteLine("It's a tie! Roll again!");
-    }
-    else if (shooter1 > shooter2 && hLC == "H") 
-    {
-        Console.WriteLine("Player 1 rolled higher! Player 1 is the SHOOTER!");
-        shooterChosen = true; // This breaks the loop! I think, I don't know it is looping back to the H/L question.
-    }
-    else if (shooter1 < shooter2 && hLC == "L") 
-    {
-        Console.WriteLine("Player 1 rolled lower! Player 1 is the SHOOTER!");
-        shooterChosen = true;
-    }
-    else if (shooter1 > shooter2 && hLC == "L") 
-    {
-        Console.WriteLine("Player 2 rolled higher! Player 2 is the SHOOTER!");
-        shooterChosen = true;
-    }
-    else if (shooter1 < shooter2 && hLC == "H") 
-    {
-        Console.WriteLine("Player 2 rolled lower! Player 2 is the SHOOTER!");
-        shooterChosen = true;
-    }
-    /*
-} do {
-    Console.WriteLine("Let's get this game started!");
-    // game logic goes here
-} while (shooterChosen == true);
-    */
+int p1Roll1 = dice.Next(1, 7);
+int p1Roll2 = dice.Next(1, 7);
+RollDie(p1Roll1);
+RollDie(p1Roll2);
+int shooter1 = p1Roll1 + p1Roll2;
+Console.WriteLine($"Player 1 rolled a total of: {shooter1}");
+Console.WriteLine("\nPress any key to continue...");
+Console.ReadKey();
+Console.Clear();
+switch (topText) {    case 0:        Console.WriteLine(slogan[0]);        break;    case 1:        Console.WriteLine(slogan[1]);        break;    case 2:        Console.WriteLine(slogan[2]);        break;    case 3:        Console.WriteLine(slogan[3]);        break;    default:        Console.WriteLine(slogan[0]);        break;}
 
+Console.WriteLine(topText);
+Console.WriteLine(title);
+Console.WriteLine("\n--- Player 2 Rolls ---" + "\nNumber to beat is: " + shooter1);
+Console.WriteLine("\nPress any key to continue...");
+Console.ReadKey();
+// numbers for player 2
+int p2Roll1 = dice.Next(1, 7);
+int p2Roll2 = dice.Next(1, 7);
+RollDie(p2Roll1);
+RollDie(p2Roll2);
+int shooter2 = p2Roll1 + p2Roll2;
+Console.WriteLine($"Player 2 rolled a total of: {shooter2}\n");
+Console.ReadKey();
+Console.Clear();
+switch (topText) {    case 0:        Console.WriteLine(slogan[0]);        break;    case 1:        Console.WriteLine(slogan[1]);        break;    case 2:        Console.WriteLine(slogan[2]);        break;    case 3:        Console.WriteLine(slogan[3]);        break;    default:        Console.WriteLine(slogan[0]);        break;}
 
-/*
-//!! All that lovely code that stinks of dumbass
+Console.WriteLine(topText);
+Console.WriteLine(title);
+// shooter choice logic // really considering make 'switch'
+if (shooter1 == shooter2) 
+{
+    Console.WriteLine("It's a tie! Roll again!");
+}
+else if (shooter1 > shooter2 && hLC == "H") 
+{
+    Console.WriteLine("Player 1 rolled higher! Player 1 is the SHOOTER!");
+    shooterChosen = false; // This breaks the loop! I think, I don't know it is looping back to the H/L question.
+}
+else if (shooter1 < shooter2 && hLC == "L") 
+{
+    Console.WriteLine("Player 1 rolled lower! Player 1 is the SHOOTER!");
+    shooterChosen = false;
+}
+else if (shooter1 > shooter2 && hLC == "L") 
+{
+    Console.WriteLine("Player 2 rolled higher! Player 2 is the SHOOTER!");
+    shooterChosen = true;
+}
+else if (shooter1 < shooter2 && hLC == "H") 
+{
+    Console.WriteLine("Player 2 rolled lower! Player 2 is the SHOOTER!");
+    shooterChosen = true;
+}
+Console.WriteLine("\nPress any key to continue...");
+Console.ReadKey();
+Console.Clear();
 
-RollDie(roll1);
-RollDie(roll2);
-Console.WriteLine($"You rolled: {roll1} and {roll2}");
-//int shooter1 = roll1 + roll2;
-Console.WriteLine("Player 2 rolls...");
-RollDie(roll1);
-RollDie(roll2);
-Console.WriteLine($"You rolled: {roll1} and {roll2}");
+// !!! @@@ WOOOO finally, got a shooter, now the real fun.
 
-//int shooter2 = roll1 + roll2;
-if (shooter1 > shooter2 && hLC == "H") {
-        Console.WriteLine("Player 1 wins! You are the SHOOTER!");
-        shooterChosen = true;
-    }
-    else if (shooter1 < shooter2 && hLC == "L") {
-        Console.WriteLine("Player 1 wins! You are the SHOOTER!");
-        shooterChosen = true;
-    }
-    else if (shooter1 > shooter2 && hLC == "L") {
-        Console.WriteLine("Player 2 wins! You are the SHOOTER!");
-        shooterChosen = false;
-    }
-    else if (shooter1 < shooter2 && hLC == "H") {
-        Console.WriteLine("Player 2 wins! You are the SHOOTER!");
-        shooterChosen = false;
-    }
-    else {
-        Console.WriteLine("It's a tie! Roll again!");
-    }
-*/
-// 
-// i'm getting double rolls for some reason
-// going to use VSCode's Source Control for the first time, in this project.
+// Slogan Selection in one line
+switch (topText) {    case 0:        Console.WriteLine(slogan[0]);        break;    case 1:        Console.WriteLine(slogan[1]);        break;    case 2:        Console.WriteLine(slogan[2]);        break;    case 3:        Console.WriteLine(slogan[3]);        break;    default:        Console.WriteLine(slogan[0]);        break;}
+Console.WriteLine(topText);
+Console.WriteLine(title);
+
+if (shooterChosen != false) 
+{
+    Console.WriteLine("Let's get this game started! Player 1 is the SHOOTER!");
+    Console.WriteLine("Press any key to continue...");
+    Console.ReadKey();
+
+}
+else if (shooterChosen == true)
+{
+    Console.WriteLine("Let's get this game started! Player 2 is the SHOOTER!");
+    Console.WriteLine("Press any key to continue...");
+    Console.ReadKey();
+}
+// Fresh Bottom , ohhhh yeah
