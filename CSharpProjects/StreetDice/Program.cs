@@ -62,22 +62,22 @@ static void RollDie(int roll1)
     switch (roll1)
     {
         case 1:
-            Console.WriteLine(" ------- \n|       |\n|   o   |\n|       |\n ------- ");
+            Console.Write(" ------- \n|       |\n|   o   |\n|       |\n ------- "); // <-- removed Line to see if it will show the dice side by side, instead of one on top of the other.
             break;
         case 2:
-            Console.WriteLine(" ------- \n|   o   |\n|       |\n|   o   |\n ------- ");
+            Console.Write(" ------- \n|   o   |\n|       |\n|   o   |\n ------- "); // triend the slash n at the end, still stacked.
             break;
         case 3:
-            Console.WriteLine(" ------- \n| o     |\n|   o   |\n|     o |\n ------- ");
+            Console.Write(" ------- \n| o     |\n|   o   |\n|     o |\n ------- ");
             break;
         case 4:
-            Console.WriteLine(" ------- \n| o   o |\n|       |\n| o   o |\n ------- ");
+            Console.Write(" ------- \n| o   o |\n|       |\n| o   o |\n ------- ");
             break;
         case 5:
-            Console.WriteLine(" ------- \n| o   o |\n|   o   |\n| o   o |\n ------- ");
+            Console.Write(" ------- \n| o   o |\n|   o   |\n| o   o |\n ------- ");
             break;
         case 6:
-            Console.WriteLine(" ------- \n| o   o |\n| o   o |\n| o   o |\n ------- ");
+            Console.Write(" ------- \n| o   o |\n| o   o |\n| o   o |\n ------- ");
             break;
         
     }
@@ -108,6 +108,7 @@ switch (roll2)
     }
 }
 // I don't get functions yet obvliously
+// these babies wanna stack.
 RollDie(roll1);
 RollDie2(roll2);
 Console.WriteLine($"You rolled: {roll1} and {roll2}");
