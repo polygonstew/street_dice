@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Net;
 
 int p1cash = 100;
 int p2cash = 100;
@@ -6,8 +7,10 @@ int p1PlaceBet = 0;
 int p2PlaceBet = 0;
 string matchFade = "";
 bool shooterChosen = false;
+bool showCash = true;
 string hLC = "";
 string hLC2 = "";
+string titleText = "";
 int shooter1 = 0;
 int shooter2 = 0;
 Random dice = new Random();
@@ -25,7 +28,7 @@ void mainGame() {
             Console.Clear();
             titleCard();
             Console.WriteLine("                   Welcome to the streets! Let's get you set up!");
-            Console.Write("\n                      Player 1 pick High or Low! (H/L) ");
+            Console.Write("\n                      Player 1 pick \x1b[33mHigh\x1b[0m or \x1b[34mLow\x1b[0m! (\x1b[33mH\x1b[0m/\x1b[34mL\x1b[0m) ");
             break;
         }
         else if (play == "n")
@@ -73,7 +76,7 @@ void mainGame() {
         shooter1 = p1Roll1 + p1Roll2;
         Console.WriteLine($"Player 1 rolled a total of: {shooter1}");
         
-        Console.Write("\nPress any key to roll for Player 2...");
+        Console.Write("\nPress [ENTER] to roll for Player 2...");
         Console.ReadKey();
         Console.WriteLine();
 
@@ -83,12 +86,12 @@ void mainGame() {
         RollDie(p2Roll2);
         shooter2 = p2Roll1 + p2Roll2;
         Console.WriteLine($"Player 2 rolled a total of: {shooter2}\n");
-        Console.ReadKey();
+        Console.Write("\n                         Press [ENTER] to see who the SHOOTER is...");
 
         if (shooter1 == shooter2)
         {
             Console.WriteLine("                            It's a tie! Roll again!");
-            Console.Write("\nPress any key to REROLL...");
+            Console.Write("\nPress [ENTER] to REROLL...");
             Console.ReadKey();
             Console.Clear();
             titleCard();
@@ -127,7 +130,7 @@ void mainGame() {
         }
     }
 
-    Console.Write("\n                         Press any key to continue...");
+    Console.Write("\n                         Press [ENTER] to continue...");
     Console.ReadKey();
     Console.Clear();
     titleCard();
@@ -140,7 +143,7 @@ void mainGame() {
     {
         Console.WriteLine("                  Let's get this game started! Player 2 Get Ready!");
     }
-    Console.Write("                        Press any key to continue...");
+    Console.Write("                        Press [ENTER] to continue...");
     Console.ReadKey();
     Console.Clear();
     titleCard();
@@ -151,7 +154,7 @@ void mainGame() {
     Console.WriteLine("MATCH the SHOOTER's bet to play with them.\nFADE to bet against the SHOOTER."); // took out the \x1b[XXm]
 
     Console.WriteLine("\n \x1b[31m!!\x1b[0m SHOOTER RULES ---");
-    Console.WriteLine("Roll \x1b[32m7\x1b[0m or \x1b[32m11\x1b[0m to win\n\x1b[33m2\x1b[0m, \x1b[33m3\x1b[0m, or \x1b[33m12\x1b[0m to lose.\n\x1b[31m4, 5, 6, 8, 9, or 10\x1b[0m becomes the \x1b[34mPOINT\x1b[0m \nroll that number again \x1b[32mWIN\x1b[0m\nroll a \x1b[33m7\x1b[0m \x1b[31mLOSE\x1b[0m dice and money\nGood luck!\nWhen done reading, press any key to continue...");
+    Console.WriteLine("Roll \x1b[32m7\x1b[0m or \x1b[32m11\x1b[0m to win\n\x1b[33m2\x1b[0m, \x1b[33m3\x1b[0m, or \x1b[33m12\x1b[0m to lose.\n\x1b[31m4, 5, 6, 8, 9, or 10\x1b[0m becomes the \x1b[34mPOINT\x1b[0m \nroll that number again \x1b[32mWIN\x1b[0m\nroll a \x1b[33m7\x1b[0m \x1b[31mLOSE\x1b[0m dice and money\nGood luck!\nWhen done reading, press [ENTER] to continue...");
     Console.ReadKey();
 
 
@@ -172,7 +175,7 @@ void mainGame() {
 
         CrapsPhase(thePot);
 
-        Console.Write("\nRound over! Press any key for the next round...");
+        Console.Write("\nRound over! Press [ENTER] for the next round...");
         Console.ReadKey();
     }
 
@@ -211,39 +214,47 @@ void mainGame() {
             case 3: Console.WriteLine(slogan[3]); break;
             default: Console.WriteLine(slogan[0]); break;
         }
-
+        if (showCash != true)
+            {
+                titleText = $"Player 1: \x1b[33m$\x1b[32m{p1cash}\x1b[0m | Player 2: \x1b[33m$\x1b[32m{p2cash}\x1b[0m";
+            }
+        else
+            {
+                titleText = "STREET DICE is \x1b[33m2 Players Only\x1b[0m";
+            }
         var title = $"""
-                _________  __                         __    ________  .__            
-                /   _____/ /  |________   ____   _____/  |_  \______ \ |__| ____  ____  
+                 _________ __                          __    ________  .__            
+                /   _____//  |  _______   ____   _____/  |_  \______ \ |__| ____  ____  
                 \_____  \\    __\_  __ \_/ __ \_/ __ \   __\  |    |  \|  |/ ___\/ __ \ 
-                /        \|  |  |  | \/\  ___/\  ___/|  |    |    `   \  \  \__\  ___/ 
-                /_______  /|__|  |__|    \___  >\___  >__|   /_______  /__|\___  >___  >
+                /        \|  |  |  | \/\  ___/\  ___/|  |     |    `   \  \  \__\  ___/ 
+                /_______ /|__|  |__|    \___  >\___  >__|   /_______  /__|\___  >___  >
                         \/                   \/     \/               \/        \/    \/ 
-                                {"STREET DICE is \x1b[33m2 Players Only\x1b[0m"}
+                                {$"{titleText}"}
         """;
         Console.WriteLine(title);
     }
 
+    
     void scoreCard(int thePot, int p1c, int p2c, string mF, int p1B, int p2B)
     {
         Console.ForegroundColor = ConsoleColor.Green;
         string scoreC = $"""
-            /$$   
-        /$$$$$$                 {$"\x1b[31mPot: \x1b[33m$\x1b[32m{thePot}"}
+           /$$   
+         /$$$$$$                 {$"\x1b[31mPot: \x1b[33m$\x1b[32m{thePot}"}
         /$$__  $$          {$"\x1b[0m-----------------\x1b[32m"}
-        | $$  \__/         {$"\x1b[0m| Player 1: \x1b[33m$\x1b[32m{p1c}"}  |
-        |  $$$$$$          {$"\x1b[0m| Player 2: \x1b[33m$\x1b[32m{p2c}"}  |
+        | $$  \__/         {$"\x1b[0m| Player 1: \x1b[33m$\x1b[32m{p1c}\x1b[0m"}  |
+        |  $$$$$$          {$"\x1b[0m| Player 2: \x1b[33m$\x1b[32m{p2c}\x1b[0m"}  |
         \____  $$          {$"\x1b[0m-----------------\x1b[32m"}
         /$$  \ $$           {$"\x1b[0mChose to: \x1b[0m{mF}\x1b[32m"}
         |  $$$$$$/          {$"\x1b[0mPlayer 1 Bet: \x1b[33m$\x1b[32m{p1B}"}
         \_  $$_/           {$"\x1b[0mPlayer 2 Bet: \x1b[33m$\x1b[32m{p2B}"}
-        \__/   
+          \__/   
 
         """;
 
         Console.Write(scoreC);
         Console.ResetColor();
-        
+
     if (shooterChosen == false)
         {
             Console.WriteLine("\x1b[32mPlayer 1 is the SHOOTER!\x1b[0m");
@@ -269,10 +280,9 @@ void mainGame() {
             case 6: dieLines = new string[] { " ------- ", "| o   o |", "| o   o |", "| o   o |", " ------- " }; break;
         }
 
-        // these are hard to crack
+    
         foreach (string line in dieLines)
         {
-            // color switch for the dice to keep bleeding off
             Console.BackgroundColor = ConsoleColor.White;
             Console.ForegroundColor = ConsoleColor.Black;
             Console.Write(line);
@@ -283,7 +293,7 @@ void mainGame() {
 
     void BettingPhase()
     {
-        Console.WriteLine("\nPlayer 1, place your bet! (enter a number)");
+        Console.WriteLine($"\nPlayer 1, place your bet! \x1b[33m$\x1b[32m{p1cash}\x1b[0m");
         while (true)
         {
             string p1BetInput = Console.ReadLine() ?? "";
@@ -295,8 +305,6 @@ void mainGame() {
         }
         
         Console.WriteLine($"Player 1 has placed a bet of $\x1b[33m{p1PlaceBet}\x1b[0m.");
-        Console.WriteLine("\nAny key for Player 2...");
-        Console.ReadKey();
 
         while (true)
         {
@@ -319,15 +327,15 @@ void mainGame() {
             else if (p2BetInput == "F")
             {
                 matchFade = "FADE";
-                Console.WriteLine("\nPlayer 2, place your FADE bet! (enter a number)");
+                Console.WriteLine($"\nPlayer 2, place FADE bet! (\x1b[33m$\x1b[32m{p2cash}\x1b[0m)");
                 string p2FadeInput = Console.ReadLine() ?? "";
                 
                 if (int.TryParse(p2FadeInput, out p2PlaceBet) && p2PlaceBet > 0 && p2PlaceBet <= p2cash)
                 {
-                    Console.WriteLine($"\nPlayer 2, FADE bet placed for $\x1b[33m{p2PlaceBet}\x1b[0m.");
+                    Console.WriteLine($"\nPlayer 2, FADE bet placed for \x1b[33m$\x1b[32m{p2PlaceBet}\x1b[0m.");
                     break;
                 }
-                Console.WriteLine($"\x1b[32mPlease enter a valid bet amount between 1 and {p2cash}.\x1b[0m");
+                Console.WriteLine($"\x1b[32mPlease enter a valid bet amount between 1 and \x1b[33m$\x1b[32m{p2cash}\x1b[0m");
             }
             else
             {
@@ -340,7 +348,7 @@ void mainGame() {
     void CrapsPhase(int potAmount)
     {
         Console.WriteLine("\n--- THE COMEOUT ROLL ---");
-        Console.Write("Press any key to roll the dice...");
+        Console.Write("Press [ENTER] to roll the dice...");
         Console.ReadKey();
 
         int d1 = dice.Next(1, 7);
@@ -367,7 +375,7 @@ void mainGame() {
             
             while (true)
             {
-                Console.Write("\nPress any key to roll...");
+                Console.Write("\nPress [ENTER] to roll...");
                 Console.ReadKey();
                 d1 = dice.Next(1, 7);
                 d2 = dice.Next(1, 7);
@@ -396,12 +404,12 @@ void mainGame() {
     {
         if (player2Won == false) 
         {
-            Console.WriteLine($"Player 1 takes the pot of ${potAmount}!");
+            Console.WriteLine($"Player 1 takes the pot of \x1b[33m$\x1b[32m{potAmount}\x1b[0m!");
             p1cash += potAmount;
         }
         else 
         {
-            Console.WriteLine($"Player 2 takes the pot of ${potAmount}!");
+            Console.WriteLine($"Player 2 takes the pot of \x1b[33m$\x1b[32m{potAmount}\x1b[0m!");
             p2cash += potAmount;
         }
     }
@@ -442,5 +450,5 @@ void mainGame() {
         {
             Console.WriteLine("\nPlease enter 'y' or 'n'.");
         }
-    } //<-- bastards
+    } 
 }
