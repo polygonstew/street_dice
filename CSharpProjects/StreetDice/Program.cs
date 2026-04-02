@@ -13,6 +13,8 @@ string hLC2 = "";
 string titleText = "";
 int shooter1 = 0;
 int shooter2 = 0;
+int currentShooter = 1;
+int otherPlayer = 2;
 Random dice = new Random();
 mainGame();
 void mainGame() {
@@ -105,7 +107,10 @@ void mainGame() {
             titleCard();
             Console.WriteLine("                   Player 1 rolled lower! Player 1 is the SHOOTER!");    // these were set up backwards | FIXED
             shooterChosen = false;
+            currentShooter = 1;
+            otherPlayer = 2;
             break;
+
         }
         else if (shooter1 < shooter2 && hLC == "L")
         {
@@ -113,7 +118,10 @@ void mainGame() {
             titleCard();
             Console.WriteLine("                   Player 1 rolled higher! Player 1 is the SHOOTER!");
             shooterChosen = false;
+            currentShooter = 1;
+            otherPlayer = 2;
             break;
+
         }
         else if (shooter1 > shooter2 && hLC == "L")
         {
@@ -121,7 +129,10 @@ void mainGame() {
             titleCard();
             Console.WriteLine("                   Player 2 rolled lower! Player 2 is the SHOOTER!");
             shooterChosen = true;
+            currentShooter = 2;
+            otherPlayer = 1;
             break;
+
         }
         else if (shooter1 < shooter2 && hLC == "H")
         {
@@ -129,7 +140,10 @@ void mainGame() {
             titleCard();
             Console.WriteLine("                   Player 2 rolled higher! Player 2 is the SHOOTER!");
             shooterChosen = true;
+            currentShooter = 2;
+            otherPlayer = 1;
             break;
+            
         }
     }
 
@@ -261,10 +275,12 @@ void mainGame() {
     if (shooterChosen == false)
         {
             Console.WriteLine("        \x1b[33mPlayer 1 is the SHOOTER!\x1b[0m");
+    
         }
         else
         {
             Console.WriteLine("        \x1b[33mPlayer 2 is the SHOOTER!\x1b[0m");
+
         }
     }
 
@@ -303,18 +319,12 @@ void mainGame() {
             Console.WriteLine(); 
         }
     }
-bool isShooter = false;
-int currentShooter = 1;
 
-if (isShooter == true $$ )
-    {
-        Console.WriteLine("Player 1 is the SHOOTER!");
-    }
 
     void BettingPhase()
     {
-        showCash = false;
-        Console.Write($"\nPlayer 1, place your bet! \x1b[34mCurrent Cash:\x1b[33m$\x1b[32m {p1cash}\x1b[0m Bet: ");
+        showCash = false;  // really wanna switch this
+        Console.Write($"\nPlayer {currentShooter}, place your bet! \x1b[34mCurrent Cash:\x1b[33m$\x1b[32m {p1cash}\x1b[0m Bet: ");
         while (true)
         {
             string p1BetInput = Console.ReadLine() ?? "";
@@ -325,11 +335,11 @@ if (isShooter == true $$ )
             Console.WriteLine($"\x1b[32mPlease enter a valid bet amount between 1 and {p1cash}.\x1b[0m");
         }
         
-        Console.WriteLine($"Player 1 has placed a bet of \x1b[33m$\x1b[32m{p1PlaceBet}\x1b[0m.");
+        Console.WriteLine($"Player {currentShooter} has placed a bet of \x1b[33m$\x1b[32m{p1PlaceBet}\x1b[0m.");
 
         while (true)
         {
-            Console.WriteLine("\nPlayer 2, will you MATCH or FADE Player 1's bet? [M/F]");
+            Console.WriteLine($"\nPlayer {otherPlayer}, will you MATCH or FADE Player {currentShooter}'s bet? [M/F]");
             string p2BetInput = (Console.ReadLine() ?? "").ToUpper();
             
             if (p2BetInput == "M")
@@ -342,18 +352,18 @@ if (isShooter == true $$ )
                     Console.WriteLine("\x1b[31mYou don't have enough to MATCH! Defaulting to ALL IN.\x1b[0m");
                     p2PlaceBet = p2cash;
                 }
-                Console.WriteLine($"\nPlayer 2, MATCH bet! (\x1b[34mCurrent Cash:\x1b[33m$\x1b[32m {p2PlaceBet}\x1b[0m) it is!");
+                Console.WriteLine($"\nPlayer {otherPlayer}, MATCH bet! (\x1b[34mCurrent Cash:\x1b[33m$\x1b[32m {p2PlaceBet}\x1b[0m) it is!");
                 break;
             }
             else if (p2BetInput == "F")
             {
                 matchFade = "FADE";
-                Console.WriteLine($"\nPlayer 2, place FADE bet! (\x1b[34mCurrent Cash:\x1b[33m$\x1b[32m {p2cash}\x1b[0m Bet: )");
+                Console.WriteLine($"\nPlayer {otherPlayer}, place FADE bet! (\x1b[34mCurrent Cash:\x1b[33m$\x1b[32m {p2cash}\x1b[0m Bet: )");
                 string p2FadeInput = Console.ReadLine() ?? "";
                 
                 if (int.TryParse(p2FadeInput, out p2PlaceBet) && p2PlaceBet > 0 && p2PlaceBet <= p2cash)
                 {
-                    Console.WriteLine($"\nPlayer 2, FADE bet placed for \x1b[33m$\x1b[32m{p2PlaceBet}\x1b[0m.");
+                    Console.WriteLine($"\nPlayer {otherPlayer}, FADE bet placed for \x1b[33m$\x1b[32m{p2PlaceBet}\x1b[0m.");
                     break;
                 }
                 Console.WriteLine($"\x1b[32mPlease enter a valid bet amount between 1 and \x1b[33m$\x1b[32m{p2cash}\x1b[0m");
@@ -415,6 +425,9 @@ if (isShooter == true $$ )
                 else if (nextRoll == 7)
                 {
                     Console.WriteLine("\x1b[31mSEVEN OUT! Shooter LOSES!\x1b[0m");
+                    
+                    // Have to swithch dice here and I have the !shooterChosen 
+                    
                     Payout(!shooterChosen, potAmount);
                     break;
                 }
