@@ -96,7 +96,7 @@ while (true)
     {
         Console.Clear();
         titleCard();
-        Console.WriteLine("                   Player 1 rolled higher! Player 1 is the SHOOTER!");
+        Console.WriteLine("                   Player 1 rolled lower! Player 1 is the SHOOTER!");    // these were set up backwards | FIXED
         shooterChosen = false;
         break;
     }
@@ -104,7 +104,7 @@ while (true)
     {
         Console.Clear();
         titleCard();
-        Console.WriteLine("                   Player 1 rolled lower! Player 1 is the SHOOTER!");
+        Console.WriteLine("                   Player 1 rolled higher! Player 1 is the SHOOTER!");
         shooterChosen = false;
         break;
     }
@@ -112,7 +112,7 @@ while (true)
     {
         Console.Clear();
         titleCard();
-        Console.WriteLine("                   Player 2 rolled higher! Player 2 is the SHOOTER!");
+        Console.WriteLine("                   Player 2 rolled lower! Player 2 is the SHOOTER!");
         shooterChosen = true;
         break;
     }
@@ -120,7 +120,7 @@ while (true)
     {
         Console.Clear();
         titleCard();
-        Console.WriteLine("                   Player 2 rolled lower! Player 2 is the SHOOTER!");
+        Console.WriteLine("                   Player 2 rolled higher! Player 2 is the SHOOTER!");
         shooterChosen = true;
         break;
     }
@@ -392,3 +392,41 @@ void Payout(bool player2Won, int potAmount)
         p2cash += potAmount;
     }
 }
+
+/*  Notes:
+- Keeping the scoreboard up instead of the title card | FIXED
+- Added a payout function to clean up the code and make it more readable | FIXED
+- Need to add a replay option at the end of the game | NOT ADDED YET
+This is the function I was thinking of the the replay static void 
+
+Replay(){
+    Console.WriteLine("\nWould you like to play again? (y/n)");
+    string replayInput = (Console.ReadLine() ?? "").ToLower();
+    
+    if (replayInput == "y")
+    {
+        p1cash = 100;
+        p2cash = 100;
+        p1PlaceBet = 0;
+        p2PlaceBet = 0;
+        matchFade = "";
+        shooterChosen = false;
+        hLC = "";
+        hLC2 = "";
+        shooter1 = 0;
+        shooter2 = 0;
+        Console.Clear();
+        titleCard();
+    }
+    else if (replayInput == "n")
+    {
+        Console.WriteLine("\nThanks for playing! See you next time!");
+        Environment.Exit(0);
+    }
+    else
+    {
+        Console.WriteLine("\nPlease enter 'y' or 'n'.");
+    }
+}
+
+*/ 
